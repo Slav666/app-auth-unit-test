@@ -1,7 +1,7 @@
 import { FC, ReactElement } from 'react';
 
 interface FormWrapperProps {
-  children: ReactElement | string;
+  children: ReactElement;
 }
 
 export const FormWrapper: FC<FormWrapperProps> = ({ children }) => (
