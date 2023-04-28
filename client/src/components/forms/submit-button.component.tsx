@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 
 interface Props {
-  isDisabled: boolean;
+  isDisabled?: boolean;
   children: ReactElement | string;
 }
 

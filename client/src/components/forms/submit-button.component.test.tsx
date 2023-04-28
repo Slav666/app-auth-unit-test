@@ -4,12 +4,12 @@ import { render, screen } from '~/test/utils';
 import { GBIcon } from '../../i18n/icons';
 describe('Submit Button', () => {
   it('should render a submit button with text only', () => {
-    render(<SubmitButton isDisabled>Test text</SubmitButton>);
+    render(<SubmitButton>Test text</SubmitButton>);
     expect(screen.getByRole('button', { name: 'Test text' })).toBeInTheDocument();
   });
   it('should render a submit button with an icon only', () => {
     render(
-      <SubmitButton isDisabled>
+      <SubmitButton>
         <GBIcon />
       </SubmitButton>,
     );
@@ -17,7 +17,7 @@ describe('Submit Button', () => {
   });
   it('should render a submit button with text and an icon', () => {
     render(
-      <SubmitButton isDisabled>
+      <SubmitButton>
         <span>
           <GBIcon />
           <p>Test text</p>
@@ -25,13 +25,14 @@ describe('Submit Button', () => {
       </SubmitButton>,
     );
     expect(screen.getByRole('button', { name: 'United kingdom Flag Test text' })).toBeInTheDocument();
+    expect(screen.getByText('Test text')).toBeInTheDocument();
   });
   it('should render a submit button in the disabled state', () => {
     render(<SubmitButton isDisabled>Test text</SubmitButton>);
     expect(screen.getByRole('button', { name: 'Test text' })).toBeDisabled();
   });
-  it('should render a submit button not in the disabled state', () => {
-    render(<SubmitButton isDisabled={false}>Test text</SubmitButton>);
+  it('should render a submit button in the enabled state', () => {
+    render(<SubmitButton>Test text</SubmitButton>);
     expect(screen.getByRole('button', { name: 'Test text' })).toBeEnabled();
   });
 });
