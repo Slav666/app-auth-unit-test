@@ -1,7 +1,7 @@
-import { FC } from 'react';
+import { FC, ReactElement } from 'react';
 
 interface FieldErrorProps {
-  children: string | undefined;
+  children: string | undefined | ReactElement;
 }
 
 export const FieldError: FC<FieldErrorProps> = ({ children }) => (
