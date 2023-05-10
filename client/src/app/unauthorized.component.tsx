@@ -1,12 +1,10 @@
 import { FC, ReactElement } from 'react';
 
-import { useNavigate } from 'react-router-dom';
+interface Props {
+  goBack?: () => void;
+}
 
-export const Unauthorized: FC = (): ReactElement => {
-  const navigate = useNavigate();
-
-  const goBack = () => navigate(-1);
-
+export const Unauthorized: FC<Props> = ({ goBack }): ReactElement => {
   return (
     <section>
       <h1>Unauthorized</h1>
