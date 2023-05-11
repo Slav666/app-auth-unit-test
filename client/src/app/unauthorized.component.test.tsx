@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { render, screen, userEvent, waitFor } from '~/test/utils';
+import { render, screen, userEvent } from '~/test/utils';
 
 import { Unauthorized } from './unauthorized.component';
 
@@ -14,11 +14,12 @@ describe('Unauthorized', () => {
   });
 
   it('should move one step backward from unauthorized page when clicks on the "Go Back" button', async () => {
+    const user = userEvent.setup();
     const goBack = vi.fn();
     render(<Unauthorized goBack={goBack} />);
 
-    userEvent.click(screen.getByRole('button', { name: 'Go Back' }));
+    await user.click(screen.getByRole('button', { name: /go back/i }));
 
-    await waitFor(() => expect(goBack).toHaveBeenCalled());
+    expect(goBack).toHaveBeenCalled();
   });
 });
