@@ -1,7 +1,7 @@
 import { FC, ReactElement } from 'react';
 
 interface Props {
-  goBack?: () => void;
+  goBack: () => void;
 }
 
 export const Unauthorized: FC<Props> = ({ goBack }): ReactElement => (

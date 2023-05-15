@@ -5,20 +5,21 @@ import { render, screen, userEvent } from '~/test/utils';
 import { Unauthorized } from './unauthorized.component';
 
 describe('Unauthorized', () => {
-  it('should render unauthorized component', () => {
-    render(<Unauthorized />);
+  const goBack = vi.fn();
 
-    expect(screen.getByRole('heading', { name: /unauthorized/i })).toBeInTheDocument();
-    expect(screen.getByText(/you do not have access to the requested page./i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /go back/i })).toBeInTheDocument();
+  it('should render unauthorized component', () => {
+    render(<Unauthorized goBack={goBack} />);
+
+    expect(screen.getByRole('heading', { name: 'Unauthorized' })).toBeInTheDocument();
+    expect(screen.getByText('You do not have access to the requested page.')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Go Back' })).toBeInTheDocument();
   });
 
   it('should move one step backward from unauthorized page when clicks on the "Go Back" button', async () => {
     const user = userEvent.setup();
-    const goBack = vi.fn();
     render(<Unauthorized goBack={goBack} />);
 
-    await user.click(screen.getByRole('button', { name: /go back/i }));
+    await user.click(screen.getByRole('button', { name: 'Go Back' }));
 
     expect(goBack).toHaveBeenCalled();
   });
