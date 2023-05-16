@@ -57,6 +57,9 @@ const App: FC = (): ReactElement => {
   const { data: appConfig } = useAppConfig();
   const auth = useAuthentication();
   console.log('AUTHENTICATION DATA: ', auth);
+
+  const navigate = useNavigate();
+  const goBack = () => navigate(-1);
   // const {
   //   data: user,
   //   error: userError,
@@ -126,7 +129,7 @@ const App: FC = (): ReactElement => {
         <Route element={<Register />} path="register" />
         <Route element={<Login />} path="/login" />
         <Route element={<Links />} path="links" />
-        <Route element={<Unauthorized />} path="unauthorized" />
+        <Route element={<Unauthorized goBack={goBack} />} path="unauthorized" />
         {/* <Unauthenticated /> */}
 
         {/* we want to protect these routes */}
