@@ -10,9 +10,9 @@ describe('Unauthorized', () => {
   it('should render unauthorized component', () => {
     render(<Unauthorized goBack={goBack} />);
 
-    expect(screen.getByRole('heading', { name: 'Unauthorized' })).toBeInTheDocument();
-    expect(screen.getByText('You do not have access to the requested page.')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Go Back' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /unauthorize/i })).toBeInTheDocument();
+    expect(screen.getByText(/you do not have access to the requested page./i)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /go back/i })).toBeInTheDocument();
   });
 
   it('should move one step backward from unauthorized page when clicks on the "Go Back" button', async () => {
