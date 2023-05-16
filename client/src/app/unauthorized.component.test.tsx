@@ -19,7 +19,7 @@ describe('Unauthorized', () => {
     const user = userEvent.setup();
     render(<Unauthorized goBack={goBack} />);
 
-    await user.click(screen.getByRole('button', { name: 'Go Back' }));
+    await user.click(screen.getByRole('button', { name: /go back/i }));
 
     expect(goBack).toHaveBeenCalled();
   });
